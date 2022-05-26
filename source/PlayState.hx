@@ -1658,6 +1658,8 @@ class PlayState extends MusicBeatState
 				var wellWellWell:FlxSound = new FlxSound().loadEmbedded(Paths.sound('wellWellWell'));
 				FlxG.sound.list.add(wellWellWell);
 
+			tankman20.visible = false;
+
 				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0, false);
 				FlxG.sound.music.fadeIn();
 
@@ -1683,6 +1685,7 @@ class PlayState extends MusicBeatState
 					{
 						boyfriend.playAnim('singUP', true);
 						boyfriend.specialAnim = true;
+			tankman20.visible = false;
 						FlxG.sound.play(Paths.sound('bfBeep'));
 					});
 
@@ -1692,10 +1695,12 @@ class PlayState extends MusicBeatState
 						camFollow.x -= 800;
 						camFollow.y -= 100;
 
+			tankman20.visible = false;
+
 						tankman.animation.play('killYou', true);
 						FlxG.sound.play(Paths.sound('killYou'));
 						
-				new FlxTimer().start(4.5, function(tmr:FlxTimer)
+				new FlxTimer().start(3.4, function(tmr:FlxTimer)
 				{
 						tankman20.animation.play('killYou2', true);
 			tankman.visible = false;
