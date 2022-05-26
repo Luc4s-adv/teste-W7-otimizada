@@ -1611,6 +1611,12 @@ class PlayState extends MusicBeatState
 		tankman.antialiasing = ClientPrefs.globalAntialiasing;
 		insert(members.indexOf(dadGroup) + 1, tankman);
 
+		var tankman20:FlxSprite = new FlxSprite(-20, 320);
+		tankman20.frames = Paths.getSparrowAtlas('cutscenes/ugh2');
+		tankman20.animation.addByPrefix('killYou2', 'TANK TALK 1 P2', 24, false);
+		tankman20.antialiasing = ClientPrefs.globalAntialiasing;
+		insert(members.indexOf(dadGroup) + 1, tankman20);
+
 		var gfDance:FlxSprite = new FlxSprite(gf.x - 107, gf.y + 140);
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		var gfCutscene:FlxSprite = new FlxSprite(gf.x - 104, gf.y + 122);
@@ -1689,9 +1695,14 @@ class PlayState extends MusicBeatState
 						tankman.animation.play('killYou', true);
 						FlxG.sound.play(Paths.sound('killYou'));
 						
+				new FlxTimer().start(4.5, function(tmr:FlxTimer)
+						tankman20.animation.play('killYou2', true);
+			tankman.visible = false;
+			tankman20.visible = true;
 						// We should just kill you but... what the hell, it's been a boring day... let's see what you've got!
 						new FlxTimer().start(6.1, function(tmr:FlxTimer)
 						{
+			tankman20.visible = false;
 							tankmanEnd();
 						});
 					});
@@ -1711,7 +1722,7 @@ class PlayState extends MusicBeatState
 				{
 					tightBars.play(true);
 				});
-
+			tankman.visible = true;
 				tankman.animation.addByPrefix('tightBars', 'TANK TALK 2', 24, false);
 				tankman.animation.play('tightBars', true);
 				boyfriend.animation.curAnim.finish();
