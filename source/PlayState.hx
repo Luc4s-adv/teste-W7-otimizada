@@ -1617,6 +1617,9 @@ class PlayState extends MusicBeatState
 		tankman20.antialiasing = ClientPrefs.globalAntialiasing;
 		insert(members.indexOf(dadGroup) + 1, tankman20);
 
+		var tankman10:FlxSprite = new FlxSprite(40, 10);
+		tankman10.antialiasing = ClientPrefs.globalAntialiasing;
+
 		var gfDance:FlxSprite = new FlxSprite(gf.x - 107, gf.y + 140);
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		var gfCutscene:FlxSprite = new FlxSprite(gf.x - 104, gf.y + 122);
@@ -1654,10 +1657,11 @@ class PlayState extends MusicBeatState
 				precacheList.set('wellWellWell', 'sound');
 				precacheList.set('killYou', 'sound');
 				precacheList.set('bfBeep', 'sound');
-				
+				precacheList.set('cutscenes/ugh2', 'image');
+
 				var wellWellWell:FlxSound = new FlxSound().loadEmbedded(Paths.sound('wellWellWell'));
 				FlxG.sound.list.add(wellWellWell);
-
+			tankman10.visible = false;
 			tankman20.visible = false;
 
 				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0, false);
@@ -1716,8 +1720,11 @@ class PlayState extends MusicBeatState
 				});
 
 			case 'guns':
+			tankman20.visible = false;
 				tankman.x += 40;
 				tankman.y += 10;
+
+				precacheList.set('cutscenes/tightBars', 'image');
 
 				var tightBars:FlxSound = new FlxSound().loadEmbedded(Paths.sound('tankSong2'));
 				FlxG.sound.list.add(tightBars);
@@ -1729,9 +1736,12 @@ class PlayState extends MusicBeatState
 				{
 					tightBars.play(true);
 				});
-			tankman.visible = true;
-				tankman.animation.addByPrefix('tightBars', 'TANK TALK 2', 24, false);
-				tankman.animation.play('tightBars', true);
+			tankman.visible = false;
+			tankman10.visible = true;
+				tankman10.frames = AtlasFrameMaker.construct('cutscenes/tightBars');
+				tankman10.animation.addByPrefix('tightBars', 'TANK TALK 2', 24, false);
+				insert(members.indexOf(dadGroup) + 1, tankman10);
+				tankman10.animation.play('tightBars', true);
 				boyfriend.animation.curAnim.finish();
 
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 4, {ease: FlxEase.quadInOut});
@@ -1749,12 +1759,13 @@ class PlayState extends MusicBeatState
 				new FlxTimer().start(11.6, function(tmr:FlxTimer)
 				{
 					tankmanEnd();
-
+			tankman10.visible = false;
 					gf.dance();
 					gf.animation.finishCallback = null;
 				});
 
 			case 'stress':
+			tankman20.visible = false;
 				tankman.x -= 54;
 				tankman.y -= 14;
 				gfGroup.alpha = 0.00001;
