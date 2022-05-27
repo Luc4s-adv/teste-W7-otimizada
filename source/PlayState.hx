@@ -1617,6 +1617,12 @@ class PlayState extends MusicBeatState
 		tankman20.antialiasing = ClientPrefs.globalAntialiasing;
 		insert(members.indexOf(dadGroup) + 1, tankman20);
 
+		var tankman30:FlxSprite = new FlxSprite(-20, 320);
+		tankman30.frames = Paths.getSparrowAtlas('cutscenes/guns2');
+		tankman30.animation.addByPrefix('tightBars2', 'TANK TALK 2', 24, false);
+		tankman30.antialiasing = ClientPrefs.globalAntialiasing;
+		insert(members.indexOf(dadGroup) + 1, tankman30);
+
 		var gfDance:FlxSprite = new FlxSprite(gf.x - 107, gf.y + 140);
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 		var gfCutscene:FlxSprite = new FlxSprite(gf.x - 104, gf.y + 122);
@@ -1651,6 +1657,7 @@ class PlayState extends MusicBeatState
 		switch(songName)
 		{
 			case 'ugh':
+			tankman30.visible = false;
 				precacheList.set('wellWellWell', 'sound');
 				precacheList.set('killYou', 'sound');
 				precacheList.set('bfBeep', 'sound');
@@ -1717,9 +1724,12 @@ class PlayState extends MusicBeatState
 				});
 
 			case 'guns':
+			tankman30.visible = false;
 			tankman20.visible = false;
 				tankman.x += 40;
 				tankman.y += 10;
+
+				precacheList.set('cutscenes/guns2', 'image');
 
 				var tightBars:FlxSound = new FlxSound().loadEmbedded(Paths.sound('tankSong2'));
 				FlxG.sound.list.add(tightBars);
@@ -1736,6 +1746,14 @@ class PlayState extends MusicBeatState
 				tankman.animation.play('tightBars', true);
 				boyfriend.animation.curAnim.finish();
 
+				new FlxTimer().start(5.6, function(tmr:FlxTimer)
+				{
+						tankman30.animation.play('tightBars2', true);
+			tankman.visible = false;
+			tankman20.visible = false;
+			tankman30.visible = true;
+				});
+
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 4, {ease: FlxEase.quadInOut});
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2 * 1.2}, 0.5, {ease: FlxEase.quadInOut, startDelay: 4});
 				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 1, {ease: FlxEase.quadInOut, startDelay: 4.5});
@@ -1751,12 +1769,13 @@ class PlayState extends MusicBeatState
 				new FlxTimer().start(11.6, function(tmr:FlxTimer)
 				{
 					tankmanEnd();
-
+			tankman30.visible = false;
 					gf.dance();
 					gf.animation.finishCallback = null;
 				});
 
 			case 'stress':
+			tankman30.visible = false;
 			tankman20.visible = false;
 				tankman.x -= 54;
 				tankman.y -= 14;
