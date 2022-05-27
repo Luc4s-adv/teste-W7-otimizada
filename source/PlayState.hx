@@ -1776,6 +1776,8 @@ class PlayState extends MusicBeatState
 					gf.animation.finishCallback = null;
 				});
 
+}
+
 	var startTimer:FlxTimer;
 	var finishTimer:FlxTimer = null;
 
