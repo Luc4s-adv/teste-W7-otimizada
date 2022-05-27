@@ -1701,7 +1701,7 @@ class PlayState extends MusicBeatState
 						tankman.animation.play('killYou', true);
 						FlxG.sound.play(Paths.sound('killYou'));
 						
-				new FlxTimer().start(1.5, function(tmr:FlxTimer)
+				new FlxTimer().start(1.9, function(tmr:FlxTimer)
 				{
 						tankman20.animation.play('killYou2', true);
 			tankman.visible = false;
