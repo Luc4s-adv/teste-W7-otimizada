@@ -32,4 +32,13 @@
 	<SubTexture name="GF Dancing at Gunpoint0027" x="0" y="3210" width="911" height="642" frameX="0" frameY="-6" frameWidth="911" frameHeight="648"/>
 	<SubTexture name="GF Dancing at Gunpoint0028" x="911" y="3210" width="911" height="642" frameX="0" frameY="-6" frameWidth="911" frameHeight="648"/>
 	<SubTexture name="GF Dancing at Gunpoint0029" x="911" y="3210" width="911" height="642" frameX="0" frameY="-6" frameWidth="911" frameHeight="648"/>
+	
+	<SubTexture name="GF Crying at Gunpoint 0000" x="1823" y="3228" width="911" height="625" frameX="0" frameY="-5" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0001" x="1823" y="3228" width="911" height="625" frameX="0" frameY="-5" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0002" x="2734" y="3228" width="911" height="629" frameX="0" frameY="-1" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0003" x="2734" y="3228" width="911" height="629" frameX="0" frameY="-1" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0004" x="1823" y="3228" width="911" height="625" frameX="0" frameY="-5" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0005" x="1823" y="3228" width="911" height="625" frameX="0" frameY="-5" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0006" x="2734" y="3228" width="911" height="629" frameX="0" frameY="-1" frameWidth="911" frameHeight="630"/>
+	<SubTexture name="GF Crying at Gunpoint 0007" x="2734" y="3228" width="911" height="629" frameX="0" frameY="-1" frameWidth="911" frameHeight="630"/>
 </TextureAtlas>
